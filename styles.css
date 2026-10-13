@@ -1,0 +1,454 @@
+:root {
+  --bg: rgb(18, 20, 28);
+  --text: rgb(237, 239, 245);
+  --text-dim: #aab2c5;
+  --accent: #6c5ce7;
+  --accent-hover: #5a4bd1;
+  --accent-light: #a79bff;
+  --surface: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: "Inter", system-ui, Arial, sans-serif;
+}
+/*Otsikot*/
+h1,
+h2,
+h3 {
+  font-family: "Space Grotesk", sans-serif;
+  color: var(--text);
+}
+
+h1 {
+  text-align: center;
+}
+
+/*Sivunrunko*/
+.container {
+  max-width: 1140px;
+  margin: 32px auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Kaikki kortit yhteisellä tyylillä */
+.intro-card,
+.info-card,
+.palautelomake {
+  padding: 28px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+}
+
+/* Liilavarjostus korteissa */
+.intro-card,
+.info-card {
+  box-shadow: inset 8px 0 0 var(--accent);
+}
+
+/* Esittelykortti */
+.intro-card h2 {
+  margin: 0 0 4px;
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 500;
+  color: #fff;
+}
+
+.intro-role {
+  margin: 0 0 16px;
+  font-size: 17px;
+  color: var(--accent-light);
+}
+
+.intro-text {
+  margin: 0;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-dim);
+}
+
+/* Infokorit */
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 24px;
+  padding: 0 24px;
+  box-sizing: border-box;
+}
+
+.container > .card-grid {
+  padding: 0;
+}
+
+.card-grid .info-card {
+  flex: 1 1 260px;
+  max-width: 340px;
+}
+
+.card-grid .info-card:has(.result) {
+  max-width: 640px;
+}
+
+.info-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.info-card h3 {
+  margin: 0 0 8px;
+  font-size: 22px;
+  font-weight: 500;
+  color: #fff;
+}
+
+.info-card p {
+  flex-grow: 1;
+  margin: 0 0 20px;
+  line-height: 1.6;
+  color: var(--text-dim);
+}
+
+.info-card .result {
+  white-space: pre-line;
+  color: var(--accent-light);
+}
+
+/* Taitojenluettelolista*/
+.skill-list {
+  margin: 0;
+  padding-left: 20px;
+  line-height: 1.9;
+  font-size: 16px;
+  color: var(--text-dim);
+}
+
+/*Luettelomerkki listassa*/
+.skill-list li::marker {
+  color: var(--accent);
+}
+
+/* Työkokemuskortti */
+.card-grid .info-card.wide {
+  flex: 0 0 100%;
+  max-width: none;
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: 2fr 3fr;
+  grid-template-rows: auto 1fr;
+  gap: 4px 28px;
+  align-items: start;
+}
+
+.info-card.wide img {
+  grid-row: 1 / span 2;
+  height: 100%;
+  margin-bottom: 0;
+}
+
+.info-card.wide h3,
+.info-card.wide p {
+  grid-column: 2;
+}
+
+.info-card.wide p {
+  margin: 0;
+}
+
+/*Nappien ulkoasu*/
+.button,
+.palautelomake button {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-family: inherit;
+  cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+
+.button:hover,
+.palautelomake button:hover {
+  background: var(--accent-hover);
+}
+
+.button:focus-visible,
+.palautelomake button:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.button {
+  align-self: flex-start;
+  padding: 8px 18px;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.palautelomake button {
+  align-self: center;
+  padding: 10px 22px;
+  font-size: 16px;
+}
+
+.back-to-projects {
+  margin-top: 30px;
+}
+
+/*Sivun alaosa*/
+footer {
+  text-align: center;
+  padding: 24px 16px;
+  font-size: 14px;
+  color: var(--text-dim);
+}
+/* Navigaatiovalikko */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+nav {
+  background: rgba(15, 19, 32, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 4px solid rgba(255, 255, 255, 0.08);
+}
+
+nav ul {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 24px;
+  max-width: 1200px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav ul li a {
+  display: block;
+  padding: 8px 14px;
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 15px;
+  border-radius: 8px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+nav ul li a:hover {
+  color: #fff;
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Sivu jossa olet */
+nav ul li a.active {
+  color: #fff;
+  font-weight: 500;
+  background-color: color-mix(in srgb, var(--accent) 20%, transparent);
+}
+
+nav ul li a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+/* Logo */
+nav ul li:first-child {
+  margin-right: auto;
+}
+
+nav ul li:first-child a,
+nav ul li:first-child a:hover {
+  padding: 0;
+  background: none;
+}
+
+nav ul li:first-child img {
+  display: block;
+  width: auto;
+  height: 64px;
+  border-radius: 16px;
+}
+
+/* "Ota yhteyttä" -nappi */
+nav ul li:last-child {
+  margin-left: 16px;
+}
+
+nav ul li:last-child a {
+  padding: 8px 18px;
+  color: #fff;
+  background-color: var(--accent);
+}
+
+nav ul li:last-child a:hover {
+  background-color: var(--accent-hover);
+}
+
+/* Lomakkeet */
+.palautelomake input,
+.palautelomake textarea,
+.project-form input {
+  background: rgba(0, 0, 0, 0.25);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+/* Palaute/yhteydenottolomake */
+.palautelomake {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 640px;
+  margin: 0 auto;
+  box-shadow: inset 0 0 0 4px var(--accent);
+}
+
+.palautelomake input,
+.palautelomake textarea {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 12px 14px;
+  font-family: inherit;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.palautelomake input::placeholder,
+.palautelomake textarea::placeholder {
+  color: var(--text-dim);
+  opacity: 0.8;
+}
+
+.palautelomake input:focus,
+.palautelomake textarea:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+
+.palautelomake textarea {
+  min-height: 140px;
+  resize: vertical;
+}
+
+/* Projektien lomake */
+.project-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.project-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  color: var(--text-dim);
+}
+
+.project-form input {
+  padding: 10px 12px;
+}
+
+/* Projektisivun kortit*/
+.projects-page .card-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.projects-page .card-grid .info-card {
+  max-width: none;
+  min-width: 0;
+}
+
+/* Mobiili-ulkoasu */
+@media (max-width: 768px) {
+
+  /* Valikon rivittäytyminen */
+  nav ul {
+    height: auto;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 8px 12px;
+  }
+
+  nav ul li:first-child {
+    flex-basis: 100%;
+    margin-right: 0;
+    display: flex;
+    justify-content: center;
+  }
+
+  nav ul li:first-child img {
+    height: 56px;
+  }
+
+  nav ul li a {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  nav ul li:last-child {
+    margin-left: 0;
+  }
+
+  /* Työkokemuskortin kuva ylös ja teksti alle mobiilissa */
+  .card-grid .info-card.wide {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .card-grid .info-card.wide img {
+    height: auto;
+    margin-bottom: 16px;
+  }
+
+  .card-grid .info-card.wide h3,
+  .card-grid .info-card.wide p {
+    margin: 0 0 12px;
+  }
+
+  /* Projektisivun kortit mobiilissa */
+  .projects-page .card-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .projects-page .card-grid .info-card {
+    padding: 20px 18px;
+  }
+
+  .projects-page .card-grid .info-card h3 {
+    font-size: 20px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .projects-page .card-grid .info-card p {
+    line-height: 1.7;
+    overflow-wrap: anywhere;
+  }
+
+  .projects-page .card-grid .info-card .button {
+    margin-top: 4px;
+  }
+}
